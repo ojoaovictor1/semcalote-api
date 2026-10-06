@@ -2,7 +2,7 @@ import { Usuarios } from '../model/relacionamentos/index.js';
 
 export const gravarUsuario = async (req, res) => {
   try {
-    const { nome, email, senha, foto, chave_pix, data_nasc } = req.body;
+    const { nome, email, password, foto, chave_pix, data_nasc } = req.body;
 
     if(!nome || nome.trim() === "") {
       return res.status(400).json({ msg: "O campo 'nome' é obrigatório." });
@@ -12,11 +12,11 @@ export const gravarUsuario = async (req, res) => {
       return res.status(400).json({ msg: "O campo 'email' é obrigatório." });
     }
 
-    if(!senha || senha.trim() === "") {
-      return res.status(400).json({ msg: "O campo 'senha' é obrigatório." });
+    if(!password || password.trim() === "") {
+      return res.status(400).json({ msg: "O campo 'password' é obrigatório." });
     }
 
-    const usuario = await Usuarios.create({ nome, email, senha, foto, chave_pix, data_nasc });
+    const usuario = await Usuarios.create({ nome, email, password, foto, chave_pix, data_nasc });
     res.status(201).json({ msg: "Usuário criado com sucesso!", usuario });
   } catch (error) {
     console.error("Erro ao criar o usuário:", error);

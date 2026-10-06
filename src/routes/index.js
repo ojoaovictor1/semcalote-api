@@ -3,6 +3,11 @@ import * as Controllers from "../controller/index.js";
 
 const routes = Router();
 
+// HEALTH CHECK
+routes.get("/health", (req, res) => {
+  res.status(200).json({ msg: "Tudo ok!" });
+});
+
 // USUARIOS
 routes.post("/usuarios", Controllers.UsuarioController.gravarUsuario);
 routes.get("/usuarios", Controllers.UsuarioController.listarUsuarios);
