@@ -24,6 +24,11 @@ classificacao: {
   type: DataTypes.STRING,
   allowNull: false
 },
+
+quantidade_jogadores: {
+  type: DataTypes.STRING,
+  allowNull: false
+},
 status: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
