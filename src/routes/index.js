@@ -15,6 +15,8 @@ routes.post("/login", Controllers.LoginController.login);
 // USUARIOS
 routes.post("/usuarios", Controllers.UsuarioController.gravarUsuario);
 routes.get("/usuarios", Auth.privado, Controllers.UsuarioController.listarUsuarios);
+routes.get("/usuarios/:id", Auth.privado, Controllers.UsuarioController.buscarUsuarioPorId);
+routes.get("/usuarios/email/:email", Auth.privado, Controllers.UsuarioController.buscarUsuarioPorEmail);
 
 // JOGOS
 routes.post("/jogos", Controllers.JogoController.gravarJogo);

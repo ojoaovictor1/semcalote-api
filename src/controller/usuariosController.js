@@ -41,3 +41,33 @@ export const listarUsuarios = async (req, res) => {
 
   }
 }
+
+export const buscarUsuarioPorId = async (req, res) => {
+  try{
+    const { id } = req.params;
+    const usuario = await Usuarios.findByPk(id, { attributes: { exclude: ['senha'] } });
+
+    if (!usuario) {
+      return res.status(404).json({ msg: "Usuário não encontrado." });
+    }
+    res.status(200).json(usuario);
+  }catch(error){
+    console.error("Erro ao buscar usuário:", error);
+    res.status(500).json({ msg: "Erro ao buscar o usuário." });
+  }
+}
+
+export const buscarUsuarioPorEmail = async (req, res) => {
+  try {
+    const { email } = req.params;
+    const usuario = await Usuarios.findOne({ where: { email }, attributes: { exclude: ['senha'] } });
+
+    if (!usuario) {
+      return res.status(404).json({ msg: "Usuário não encontrado." });
+    }
+    res.status(200).json(usuario);
+  }catch(error){
+    console.error("Erro ao buscar usuário:", error);
+    res.status(500).json({ msg: "Erro ao buscar o usuário." });
+  }
+}
