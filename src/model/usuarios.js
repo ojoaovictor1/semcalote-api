@@ -16,7 +16,7 @@ const Usuarios = db_mysql.define('usuarios', {
     allowNull: false,
     unique: true
   },
-  password: {
+  senha: {
     type: DataTypes.STRING,
     allowNull: false
   },
